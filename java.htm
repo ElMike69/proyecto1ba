@@ -1,0 +1,1592 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head><link rel="stylesheet" type="text/css" href="css3clock.css" />
+<style>
+.counter{
+background-color:black;
+color:yellow;
+font-weight:bold;
+}
+</style>
+
+<SCRIPT>
+
+//Personal Counter- by Jaafar Bin Yusof, Singapore (jaafar66@yahoo.com)
+//Modified by JavaScript Kit (http://javascriptkit.com)
+//Visit http://javascriptkit.com for this script
+
+expireDate = new Date
+expireDate.setMonth(expireDate.getMonth()+6)
+jcount = eval(cookieVal("jaafarCounter"))
+jcount++
+document.cookie = "jaafarCounter="+jcount+";expires=" + expireDate.toGMTString()
+
+function cookieVal(cookieName) {
+thisCookie = document.cookie.split("; ")
+for (i=0; i<thisCookie.length; i++){
+	if (cookieName == thisCookie[i].split("=")[0]){
+		return thisCookie[i].split("=")[1]
+	}
+}
+return 0
+}
+
+function page_counter(){
+for (i=0;i<(7-jcount.toString().length);i++)
+document.write('<span class="counter">0</span>')
+for (y=0;y<(jcount.toString().length);y++)
+document.write('<span class="counter">'+jcount.toString().charAt(y)+'</span>')
+}
+
+</SCRIPT>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Untitled Document</title>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+<style type="text/css">
+<!--
+body {
+	background-color: #99FFFF;
+}
+-->
+</style></head>
+
+<body>
+<div id="Layer8" style="position:absolute; left:1070px; top:178px; width:302px; height:152px; z-index:8"></div>
+<div id="Layer9" style="position:absolute; left:418px; top:273px; width:208px; height:199px; z-index:9"></div>
+<SCRIPT>
+
+/*
+Code Written by Cory Fogliani (Email: cory@ijustdontcare.com)
+Testers: Cory Fogliani, Chris Gordon
+Featured on JavaScript Kit (http://javascriptkit.com)
+For this and over 400+ free scripts, visit http://javascriptkit.com
+*/
+
+//if IE4/NS6, apply style
+if (document.all||document.getElementById){
+document.write('<style>.tictac{')
+document.write('width:50px;height:50px;')
+document.write('}</style>')
+}
+
+var sqr1
+var sqr2
+var sqr3
+var sqr4
+var sqr5
+var sqr6
+var sqr7
+var sqr8
+var sqr9
+var sqr1T = 0
+var sqr2T = 0
+var sqr3T = 0
+var sqr4T = 0
+var sqr5T = 0
+var sqr6T = 0
+var sqr7T = 0
+var sqr8T = 0
+var sqr9T = 0
+var moveCount = 0
+var turn = 0
+var mode = 1
+
+function vari()
+{
+sqr1 = document.tic.sqr1.value
+sqr2 = document.tic.sqr2.value
+sqr3 = document.tic.sqr3.value
+sqr4 = document.tic.sqr4.value
+sqr5 = document.tic.sqr5.value
+sqr6 = document.tic.sqr6.value
+sqr7 = document.tic.sqr7.value
+sqr8 = document.tic.sqr8.value
+sqr9 = document.tic.sqr9.value
+}
+function check()
+{
+  if(sqr1 == " X " && sqr2 == " X " && sqr3 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  } 
+  else if(sqr4 == " X " && sqr5 == " X " && sqr6 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  } 
+  else if(sqr7 == " X " && sqr8 == " X " && sqr9 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else if(sqr1 == " X " && sqr5 == " X " && sqr9 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else if(sqr1 == " X " && sqr4 == " X " && sqr7 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else if(sqr2 == " X " && sqr5 == " X " && sqr8 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else if(sqr3 == " X " && sqr6 == " X " && sqr9 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else if(sqr1 == " X " && sqr5 == " X " && sqr9 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else if(sqr3 == " X " && sqr5 == " X " && sqr7 == " X ")
+  {
+    alert("You Win!")
+    reset()
+  }
+  else
+  {
+    winCheck()
+    check2()
+    drawCheck()  
+  } 
+}
+
+function check2()
+{
+  vari()
+  drawCheck()
+  if(sqr1 == " O " && sqr2 == " O " && sqr3 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  } 
+  else if(sqr4 == " O " && sqr5 == " O " && sqr6 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  } 
+  else if(sqr7 == " O " && sqr8 == " O " && sqr9 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+  else if(sqr1 == " O " && sqr4 == " O " && sqr7 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+  else if(sqr2 == " O " && sqr5 == " O " && sqr8 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+  else if(sqr3 == " O " && sqr6 == " O " && sqr9 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+  else if(sqr3 == " O " && sqr5 == " O " && sqr7 == " O ")
+  {
+    alert("You Lose!")
+    reset()
+  }
+}
+
+function player1Check()
+{
+  if(sqr1 == " X " && sqr2 == " X " && sqr3 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  } 
+  else if(sqr4 == " X " && sqr5 == " X " && sqr6 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  } 
+  else if(sqr7 == " X " && sqr8 == " X " && sqr9 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else if(sqr1 == " X " && sqr5 == " X " && sqr9 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else if(sqr1 == " X " && sqr4 == " X " && sqr7 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else if(sqr2 == " X " && sqr5 == " X " && sqr8 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else if(sqr3 == " X " && sqr6 == " X " && sqr9 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else if(sqr1 == " X " && sqr5 == " X " && sqr9 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else if(sqr3 == " X " && sqr5 == " X " && sqr7 == " X ")
+  {
+    alert("Player 1 wins!")
+    reset()
+  }
+  else
+  {
+    player2Check()
+    drawCheck()  
+  } 
+}
+
+function player2Check()
+{
+  vari()
+  drawCheck()
+  if(sqr1 == " O " && sqr2 == " O " && sqr3 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  } 
+  else if(sqr4 == " O " && sqr5 == " O " && sqr6 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  } 
+  else if(sqr7 == " O " && sqr8 == " O " && sqr9 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+  else if(sqr1 == " O " && sqr4 == " O " && sqr7 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+  else if(sqr2 == " O " && sqr5 == " O " && sqr8 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+  else if(sqr3 == " O " && sqr6 == " O " && sqr9 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+  else if(sqr3 == " O " && sqr5 == " O " && sqr7 == " O ")
+  {
+    alert("Player 2 wins!")
+    reset()
+  }
+}
+
+function drawCheck()
+{
+  vari()
+  moveCount = sqr1T + sqr2T + sqr3T + sqr4T + sqr5T + sqr6T + sqr7T + sqr8T + sqr9T 
+  if(moveCount == 9)
+  {
+    reset()
+    alert("Draw") 
+  }
+}
+
+function winCheck()
+{
+  check2()
+  if(sqr1 == " O " && sqr2 == " O " && sqr3T == 0 && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    sqr3T = 1;
+    turn = 0;
+  }
+  else if(sqr2 == " O " && sqr3 == " O " && sqr1T == 0 && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    sqr1T = 1;
+    turn = 0;
+  }
+  else if(sqr4 == " O " && sqr5 == " O " && sqr6T == 0 && turn == 1)
+  {
+    document.tic.sqr6.value = " O "
+    sqr6T = 1;
+    turn = 0;
+  }
+  else if(sqr5 == " O " && sqr6 == " O " && sqr4T == 0 && turn == 1)
+  {
+    document.tic.sqr4.value = " O "
+    sqr4T = 1;
+    turn = 0;
+  }
+  else if(sqr7 == " O " && sqr8 == " O " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr8 == " O " && sqr9 == " O " && sqr7T == 0 && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    sqr7T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr5 == " O " && sqr9 == " O " && sqr1T == 0 && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    sqr1T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " O " && sqr5 == " O " && sqr7T == 0 && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    sqr7T = 1;
+    turn = 0;
+  }
+  else if(sqr7 == " O " && sqr5 == " O " && sqr3T == 0 && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    sqr3T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " O " && sqr3 == " O " && sqr2T == 0 && turn == 1)
+  {
+    document.tic.sqr2.value = " O "
+    sqr2T = 1;
+    turn = 0;
+  }
+  else if(sqr4 == " O " && sqr6 == " O " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else if(sqr7 == " O " && sqr9 == " O " && sqr8T == 0 && turn == 1)
+  {
+    document.tic.sqr8.value = " O "
+    sqr8T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " O " && sqr7 == " O " && sqr4T == 0 && turn == 1)
+  {
+    document.tic.sqr4.value = " O "
+    sqr4T = 1;
+    turn = 0;
+  }
+  else if(sqr2 == " O " && sqr8 == " O " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " O " && sqr9 == " O " && sqr6T == 0 && turn == 1)
+  {
+    document.tic.sqr6.value = " O "
+    sqr6T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " O " && sqr5 == " O " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr4 == " O " && sqr7 == " O " && sqr1T == 0 && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    sqr1T = 1;
+    turn = 0;
+  }
+  else if(sqr5 == " O " && sqr8 == " O " && sqr2T == 0 && turn == 1)
+  {
+
+    document.tic.sqr2.value = " O "
+    sqr2T = 1;
+    turn = 0;
+  }
+  else if(sqr6 == " O " && sqr9 == " O " && sqr3T == 0 && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    sqr3T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " O " && sqr4 == " O " && sqr7T == 0 && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    sqr7T = 1;
+    turn = 0;
+  }
+  else if(sqr2 == " O " && sqr5 == " O " && sqr8T == 0 && turn == 1)
+  {
+    document.tic.sqr8.value = " O "
+    sqr8T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " O " && sqr6 == " O " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " O " && sqr9 == " O " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " O " && sqr7 == " O " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else
+  {
+    computer()
+  }
+  check2()
+}
+function computer()
+{
+  check2()
+  if(sqr1 == " X " && sqr2 == " X " && sqr3T == 0 && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    sqr3T = 1;
+    turn = 0;
+  }
+  else if(sqr2 == " X " && sqr3 == " X " && sqr1T == 0 && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    sqr1T = 1;
+    turn = 0;
+  }
+  else if(sqr4 == " X " && sqr5 == " X " && sqr6T == 0 && turn == 1)
+  {
+    document.tic.sqr6.value = " O "
+    sqr6T = 1;
+    turn = 0;
+  }
+  else if(sqr5 == " X " && sqr6 == " X " && sqr4T == 0 && turn == 1)
+  {
+    document.tic.sqr4.value = " O "
+    sqr4T = 1;
+    turn = 0;
+  }
+  else if(sqr7 == " X " && sqr8 == " X " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr8 == " X " && sqr9 == " X " && sqr7T == 0 && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    sqr7T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " X " && sqr5 == " X " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr5 == " X " && sqr9 == " X " && sqr1T == 0 && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    sqr1T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " X " && sqr5 == " X " && sqr7T == 0 && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    sqr7T = 1;
+    turn = 0;
+  }
+  else if(sqr7 == " X " && sqr5 == " X " && sqr3T == 0 && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    sqr3T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " X " && sqr3 == " X " && sqr2T == 0 && turn == 1)
+  {
+    document.tic.sqr2.value = " O "
+    sqr2T = 1;
+    turn = 0;
+  }
+  else if(sqr4 == " X " && sqr6 == " X " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else if(sqr7 == " X " && sqr9 == " X " && sqr8T == 0 && turn == 1)
+  {
+    document.tic.sqr8.value = " O "
+    sqr8T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " X " && sqr7 == " X " && sqr4T == 0 && turn == 1)
+  {
+    document.tic.sqr4.value = " O "
+    sqr4T = 1;
+    turn = 0;
+  }
+  else if(sqr2 == " X " && sqr8 == " X " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " X " && sqr9 == " X " && sqr6T == 0 && turn == 1)
+  {
+    document.tic.sqr6.value = " O "
+    sqr6T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " X " && sqr5 == " X " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr4 == " X " && sqr7 == " X " && sqr1T == 0 && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    sqr1T = 1;
+    turn = 0;
+  }
+  else if(sqr5 == " X " && sqr8 == " X " && sqr2T == 0 && turn == 1)
+  {
+    document.tic.sqr2.value = " O "
+    sqr2T = 1;
+    turn = 0;
+  }
+  else if(sqr6 == " X " && sqr9 == " X " && sqr3T == 0 && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    sqr3T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " X " && sqr4 == " X " && sqr7T == 0 && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    sqr7T = 1;
+    turn = 0;
+  }
+  else if(sqr2 == " X " && sqr5 == " X " && sqr8T == 0 && turn == 1)
+  {
+    document.tic.sqr8.value = " O "
+    sqr8T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " X " && sqr6 == " X " && sqr9T == 0 && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    sqr9T = 1;
+    turn = 0;
+  }
+  else if(sqr1 == " X " && sqr9 == " X " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else if(sqr3 == " X " && sqr7 == " X " && sqr5T == 0 && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    sqr5T = 1;
+    turn = 0;
+  }
+  else
+  {
+    AI()
+  }
+  check2()
+}
+
+function AI()
+{
+  vari()
+  if(document.tic.sqr5.value == "     " && turn == 1)
+  {
+    document.tic.sqr5.value = " O "
+    turn = 0
+    sqr5T = 1
+  }
+  else if(document.tic.sqr1.value == "     " && turn == 1)
+  {
+    document.tic.sqr1.value = " O "
+    turn = 0
+    sqr1T = 1
+  }
+  else if(document.tic.sqr9.value == "     " && turn == 1)
+  {
+    document.tic.sqr9.value = " O "
+    turn = 0
+    sqr9T = 1
+  }
+  else if(document.tic.sqr6.value == "     " && turn == 1)
+  {
+    document.tic.sqr6.value = " O "
+    turn = 0
+    sqr6T = 1
+  }
+  else if(document.tic.sqr2.value == "     " && turn == 1)
+  {
+    document.tic.sqr2.value = " O "
+    turn = 0
+    sqr2T = 1
+  }
+  else if(document.tic.sqr8.value == "     " && turn == 1)
+  {
+    document.tic.sqr8.value = " O "
+    turn = 0
+    sqr8T = 1
+  }
+  else if(document.tic.sqr3.value == "     " && turn == 1)
+  {
+    document.tic.sqr3.value = " O "
+    turn = 0
+    sqr3T = 1
+  }
+  else if(document.tic.sqr7.value == "     " && turn == 1)
+  {
+    document.tic.sqr7.value = " O "
+    turn = 0
+    sqr7T = 1
+  }
+  else if(document.tic.sqr4.value == "     " && turn == 1)
+  {
+    document.tic.sqr4.value = " O "
+    turn = 0
+    sqr4T = 1
+  }
+  check2()
+}
+
+function reset()
+{
+  document.tic.sqr1.value = "     "
+  document.tic.sqr2.value = "     "
+  document.tic.sqr3.value = "     "
+  document.tic.sqr4.value = "     "
+  document.tic.sqr5.value = "     "
+  document.tic.sqr6.value = "     "
+  document.tic.sqr7.value = "     "
+  document.tic.sqr8.value = "     "
+  document.tic.sqr9.value = "     "
+  sqr1T = 0
+  sqr2T = 0
+  sqr3T = 0
+  sqr4T = 0
+  sqr5T = 0
+  sqr6T = 0
+  sqr7T = 0
+  sqr8T = 0
+  sqr9T = 0
+  vari()
+  turn = 0
+  moveCount = 0
+}
+
+function resetter()
+{
+  reset()
+}
+</SCRIPT>
+
+<FORM NAME="tic" method="post">
+<INPUT TYPE="button" NAME="sqr1" class="tictac" value="     " onClick="if(document.tic.sqr1.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr1.value = ' X '; sqr1T = 1; turn = 1; vari(); check();} else if(document.tic.sqr1.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr1.value = ' X '; sqr1T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr1.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr1.value = ' O '; sqr1T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+<INPUT TYPE="button" NAME="sqr2" class="tictac" value="     " onClick="if(document.tic.sqr2.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr2.value = ' X '; sqr2T = 1; turn = 1; vari(); check();} else if(document.tic.sqr2.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr2.value = ' X '; sqr2T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr2.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr2.value = ' O '; sqr2T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+<INPUT TYPE="button" NAME="sqr3" class="tictac" value="     " onClick="if(document.tic.sqr3.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr3.value = ' X '; sqr3T = 1; turn = 1; vari(); check();} else if(document.tic.sqr3.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr3.value = ' X '; sqr3T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr3.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr3.value = ' O '; sqr3T = 1; turn = 1; vari(); player1Check()} drawCheck()"><br />
+<INPUT TYPE="button" NAME="sqr4" class="tictac" value="     " onClick="if(document.tic.sqr4.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr4.value = ' X '; sqr4T = 1; turn = 1; vari(); check();} else if(document.tic.sqr4.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr4.value = ' X '; sqr4T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr4.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr4.value = ' O '; sqr4T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+<INPUT TYPE="button" NAME="sqr5" class="tictac" value="     " onClick="if(document.tic.sqr5.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr5.value = ' X '; sqr5T = 1; turn = 1; vari(); check();} else if(document.tic.sqr5.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr5.value = ' X '; sqr5T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr5.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr5.value = ' O '; sqr5T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+<INPUT TYPE="button" NAME="sqr6" class="tictac" value="     " onClick="if(document.tic.sqr6.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr6.value = ' X '; sqr6T = 1; turn = 1; vari(); check();} else if(document.tic.sqr6.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr6.value = ' X '; sqr6T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr6.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr6.value = ' O '; sqr6T = 1; turn = 1; vari(); player1Check()} drawCheck()"><br />
+<INPUT TYPE="button" NAME="sqr7" class="tictac" value="     " onClick="if(document.tic.sqr7.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr7.value = ' X '; sqr7T = 1; turn = 1; vari(); check();} else if(document.tic.sqr7.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr7.value = ' X '; sqr7T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr7.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr7.value = ' O '; sqr7T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+<INPUT TYPE="button" NAME="sqr8" class="tictac" value="     " onClick="if(document.tic.sqr8.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr8.value = ' X '; sqr8T = 1; turn = 1; vari(); check();} else if(document.tic.sqr8.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr8.value = ' X '; sqr8T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr8.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr8.value = ' O '; sqr8T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+<INPUT TYPE="button" NAME="sqr9" class="tictac" value="     " onClick="if(document.tic.sqr9.value == '     ' && turn == 0 && mode == 1) {document.tic.sqr9.value = ' X '; sqr9T = 1; turn = 1; vari(); check();} else if(document.tic.sqr9.value == '     ' && turn == 1 && mode == 2) {document.tic.sqr9.value = ' X '; sqr9T = 1; turn = 0; vari(); player1Check()} else if(document.tic.sqr9.value == '     ' && turn == 0 && mode == 2) {document.tic.sqr9.value = ' O '; sqr9T = 1; turn = 1; vari(); player1Check()} drawCheck()">
+</form>
+
+<div id="Layer2" style="position:absolute; left:1276px; top:52px; width:238px; height:114px; z-index:2"></div>
+<div id="Layer3" style="position:absolute; left:528px; top:430px; width:547px; height:237px; z-index:3"></div>
+<div id="Layer4" style="position:absolute; left:32px; top:641px; width:331px; height:399px; z-index:4"></div>
+<div id="Layer5" style="position:absolute; left:503px; top:688px; width:551px; height:265px; z-index:5"></div>
+<div id="Layer6" style="position:absolute; left:1150px; top:628px; width:400px; height:227px; z-index:6"></div>
+<div id="Layer7" style="position:absolute; left:239px; top:909px; width:233px; height:118px; z-index:7"></div>
+<script language="JavaScript">
+
+//Form button calendar (author unknown)
+//For this script and more
+//Visit http://javascriptkit.com
+
+function setDate(str) {
+
+ if (str == "   ") {
+  return;
+ }
+
+ mnth1 = document.forms[0].month.value;
+ mnth = mnth1;
+ mnth++;
+ year = document.forms[0].year.value;
+ dateStr = mnth+"/"+str+"/"+year;
+
+ dateStr = trim(dateStr);
+ 
+ document.forms[1].dateField.value = dateStr;
+
+
+}//setDate()
+
+/**
+ * The function removes spaces from the selected date.
+ */
+
+function trim(str) {
+
+ res="";
+
+ for(var i=0; i< str.length; i++) {
+   if (str.charAt(i) != " ") {
+     res +=str.charAt(i);
+  }
+ }
+   
+ return res;
+
+}//trim()
+ 
+/**
+ * The method to get the Month name given the Month number of the year.
+ */
+
+function getMonthName(mnth) {
+
+ if (mnth == 0) {
+  name = "January";
+ }else if(mnth==1) {
+  name = "February";
+ }else if(mnth==2) {
+  name = "March";
+ }else if(mnth==3) {
+  name = "April";
+ }else if(mnth==4) {
+  name = "May";
+ } else if(mnth==5) {
+  name = "June";
+ } else if(mnth==6) {
+  name = "July";
+ } else if(mnth==7) {
+  name = "August";
+ } else if(mnth==8) {
+  name = "September";
+ } else if(mnth==9) {
+  name = "October";
+ } else if(mnth==10) {
+  name = "November";
+ } else if(mnth==11) {
+  name = "December";
+ }
+
+ return name;
+
+}//getMonthName()
+
+/**
+ * Get the number of days in the month based on the year.
+ */
+
+function getNoOfDaysInMnth(mnth,yr) {
+ 
+ rem = yr % 4;
+
+ if(rem ==0) {
+   leap = 1;
+ } else {
+  leap = 0;
+ }
+
+ noDays=0;
+
+ if ( (mnth == 1) || (mnth == 3) || (mnth == 5) ||
+      (mnth == 7) || (mnth == 8) || (mnth == 10) ||
+      (mnth == 12)) {
+  noDays=31;
+ } else if (mnth == 2) {
+           noDays=28+leap;
+        } else {
+           noDays=30;
+ }
+
+ //alert(noDays);
+ return noDays;
+ 
+      
+}//getNoOfDaysInMnth()
+  
+/**
+ * The function to reset the date values in the buttons of the 
+ * slots.
+ */
+
+function fillDates(dayOfWeek1,noOfDaysInmnth) {
+
+ for(var i=1; i<43; i++) {
+   str = "s"+i;
+   document.forms[0].elements[str].value="   ";
+ }
+
+
+ startSlotIndx = dayOfWeek1;
+ slotIndx = startSlotIndx;
+
+ for(var i=1; i<(noOfDaysInmnth+1); i++) {
+  slotName = "s"+slotIndx;
+
+  val="";
+  if (i<10) {
+    val = " "+i+" ";
+  } else {
+    val = i;
+  }
+
+  document.forms[0].elements[slotName].value = val;
+  slotIndx++;
+ }
+  
+}//fillDates()
+ 
+
+/**
+ * The function that is called at the time of loading the page.
+ * This function displays Today's date and also displays the 
+ * the calendar of the current month.
+ */
+
+function thisMonth() {
+
+  dt = new Date();
+  mnth  = dt.getMonth(); /* 0-11*/
+  dayOfMnth = dt.getDate(); /* 1-31*/
+  dayOfWeek = dt.getDay(); /*0-6*/
+  yr = dt.getFullYear(); /*4-digit year*/
+
+  //alert("month:"+(mnth+1)+":dayofMnth:"+dayOfMnth+":dayofweek:"+dayOfWeek+":year:"+yr);
+
+  mnthName = getMonthName(mnth)+ " ";
+  document.forms[0].month.value = mnth;
+  document.forms[0].year.value = yr;
+  document.forms[0].currMonth.value = mnth;
+  document.forms[0].currYear.value = yr;
+  
+  document.forms[0].monthYear.value = mnthName+yr;
+  document.forms[1].dateField.value = (mnth+1)+"/"+dayOfMnth+"/"+yr;
+
+  startStr = (mnth+1)+"/1/"+yr;
+  dt1 = new Date(startStr);
+  dayOfWeek1 = dt1.getDay(); /*0-6*/
+
+  noOfDaysInMnth = getNoOfDaysInMnth(mnth+1,yr);
+  fillDates(dayOfWeek1+1,noOfDaysInMnth);
+ 
+
+}//thisMonth()
+
+/**
+ * The function that will be used to display the calendar of the next month.
+ */
+
+function nextMonth() {
+
+ var currMnth = document.forms[0].month.value;
+ currYr = document.forms[0].year.value;
+
+ if (currMnth == "11") {
+    nextMnth = 0;
+    nextYr = currYr;
+    nextYr++;
+ } else {
+   nextMnth=currMnth;
+   nextMnth++;
+   nextYr = currYr;
+ }
+
+ mnthName = getMonthName(nextMnth);
+ document.forms[0].month.value=nextMnth;
+ document.forms[0].year.value=nextYr;
+ document.forms[0].monthYear.value= mnthName+" "+nextYr;
+
+ str = (nextMnth+1)+"/1/"+nextYr;
+ dt = new Date(str);
+ dayOfWeek = dt.getDay();
+
+ noOfDays = getNoOfDaysInMnth(nextMnth+1,nextYr);
+
+ fillDates(dayOfWeek+1,noOfDays);
+ 
+
+}//nextMonth()
+
+/**
+ * The method to display the calendar of the previous month.
+ */
+
+function prevMonth() {
+
+ var currMnth = document.forms[0].month.value;
+ currYr = document.forms[0].year.value;
+
+ if (currMnth == "0") {
+    prevMnth = 11;
+    prevYr = currYr;
+    prevYr--;
+ } else {
+   prevMnth=currMnth;
+   prevMnth--;
+   prevYr = currYr;
+ }
+
+ str = (prevMnth+1)+"/1/"+prevYr;
+ dt = new Date(str);
+ dayOfWeek = dt.getDay();
+
+ /***********************************************
+  * Remove the comment if do not want the user to 
+  * go to any previous month than this current month.
+  ***********************************************/
+
+ /*
+
+ runningMonth = document.forms[0].currMonth.value;
+ rMonth=runningMonth;
+ rMonth++;
+ runningYear = document.forms[0].currYear.value;
+ rYear=runningYear;
+
+ str = (rMonth)+"/1/"+rYear;
+ dt1 = new Date(str);
+ 
+ if (dt.valueOf() < dt1.valueOf()) {
+   alert('Cannot Go Before Current Month');
+   return;
+ }
+ 
+ */
+
+ /**************************************************
+ * End of comment
+ **************************************************/
+
+ mnthName = getMonthName(prevMnth);
+ document.forms[0].month.value=prevMnth;
+ document.forms[0].year.value=prevYr;
+ document.forms[0].monthYear.value= mnthName+" "+prevYr;
+
+ noOfDays = getNoOfDaysInMnth(prevMnth+1,prevYr);
+ fillDates(dayOfWeek+1,noOfDays);
+ 
+}//prevMonth()
+
+</script>
+</head>
+
+
+<body onload="thisMonth()">
+<table border=1 bgcolor="#BAA0A0" align=center>
+<tr>
+<td>
+<form method="post">
+    <!-- Hidden fields --->
+
+    <input type=hidden name=month value="">
+    <input type=hidden name=year value="">
+    <input type=hidden name=currMonth value="">
+    <input type=hidden name=currYear value="">
+
+ 
+    <!-- End of Hidden fields --->
+
+    <p>
+     <input type="button" name="prev" onclick="prevMonth()" 
+     value="<<">
+     <input type="text" size="15" name="monthYear" 
+     value="">
+     <input type="button" name="next" onclick="nextMonth()" value=">>">
+   </p>
+    
+    <table bgcolor="#D4D4D4" align=center border="1" cellpadding="0" cellspacing="0" 
+    width="150">
+        <tr bgcolor="#10A0A0">
+            <td width="14%"><strong>SUN</strong></td>
+            <td width="14%"><strong>MON</strong></td>
+            <td width="14%"><strong>TUE</strong></td>
+            <td width="14%"><strong>WED</strong></td>
+            <td width="14%"><strong>THU</strong></td>
+            <td width="15%"><strong>FRI</strong></td>
+            <td width="15%"><strong>SAT</strong></td>
+        </tr>
+        <tr>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+	    name="s1" value=" 1 "></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s2" value=" 2 "></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s3" value=" 3 "></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s4" value=" 4 "></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s5" value=" 5 "></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s6" value=" 6 "></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s7" value=" 7 "></td>
+        </tr>
+        <tr>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s8" value=" 8 "></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s9" value=" 9 "></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s10" value="10"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s11" value="11"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s12" value="12"></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s13" value="13"></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s14" value="14"></td>
+        </tr>
+        <tr>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s15" value="15"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s16" value="16"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s17" value="17"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s18" value="18"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s19" value="19"></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s20" value="20"></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s21" value="21"></td>
+        </tr>
+        <tr>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s22" value="22"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s23" value="23"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s24" value="24"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s25" value="25"></td>
+            <td align="center" width="14%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s26" value="26"></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s27" value="27"></td>
+            <td align="center" width="15%"><input type="button"
+            onclick="setDate(this.value);"
+            name="s28" value="28"></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="button" name="s29"
+            onclick="setDate(this.value);"
+            value="29"></td>
+            <td align="center"><input type="button" name="s30"
+            onclick="setDate(this.value);"
+            value="30"></td>
+            <td align="center"><input type="button" name="s31"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s32"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s33"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s34"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s35"
+            onclick="setDate(this.value);"
+            value="   "></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="button" name="s36"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s37"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s38"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s39"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s40"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s41"
+            onclick="setDate(this.value);"
+            value="   "></td>
+            <td align="center"><input type="button" name="s42"
+            onclick="setDate(this.value);"
+            value="   "></td>
+        </tr>
+    </table>
+</form>
+ <form method="post">
+  <table border=0 cellspacing=1 cellpadding=1>
+  <tr>
+  <td>
+  <b>Selected:</b>
+  </td>
+  <td align=center>
+  <input type=text size="12" name=dateField>
+  </td>
+  <tr>
+  </table>
+ </form>
+</td>
+</tr>
+</table>
+<div id="Layer1" style="position:absolute; left:130px; top:188px; width:249px; height:231px; z-index:1"></div>
+<b>
+
+<script>
+
+/*
+RAINBOW TEXT Script by Matt Hedgecoe (c) 2002
+Featured on JavaScript Kit
+For this script, visit http://www.javascriptkit.com
+*/
+
+// ********** MAKE YOUR CHANGES HERE
+
+var text="javascript" // YOUR TEXT
+var speed=80 // SPEED OF FADE
+
+// ********** LEAVE THE NEXT BIT ALONE!
+
+
+if (document.all||document.getElementById){
+document.write('<span id="highlight">' + text + '</span>')
+var storetext=document.getElementById? document.getElementById("highlight") : document.all.highlight
+}
+else
+document.write(text)
+var hex=new Array("00","14","28","3C","50","64","78","8C","A0","B4","C8","DC","F0")
+var r=1
+var g=1
+var b=1
+var seq=1
+function changetext(){
+rainbow="#"+hex[r]+hex[g]+hex[b]
+storetext.style.color=rainbow
+}
+function change(){
+if (seq==6){
+b--
+if (b==0)
+seq=1
+}
+if (seq==5){
+r++
+if (r==12)
+seq=6
+}
+if (seq==4){
+g--
+if (g==0)
+seq=5
+}
+if (seq==3){
+b++
+if (b==12)
+seq=4
+}
+if (seq==2){
+r--
+if (r==0)
+seq=3
+}
+if (seq==1){
+g++
+if (g==12)
+seq=2
+}
+changetext()
+}
+function starteffect(){
+if (document.all||document.getElementById)
+flash=setInterval("change()",speed)
+}
+starteffect()
+</script>
+</b>
+
+<p align="center">&nbsp;</p>
+<script LANGUAGE="JavaScript">
+<!--
+
+/*
+Submitted by David Gardner (davidgardner7@yahoo.com)
+Featured on JavaScript Kit (http://javascriptkit.com)
+For this and over 400+ free scripts, visit http://javascriptkit.com
+*/
+
+function getpet () {
+
+        var toyear = 1997;
+        var birthyear = document.frm.inyear.value;
+        var birthpet="Ox"
+
+        x = (toyear - birthyear) % 12
+        if ((x == 1) || (x == -11)) {
+            birthpet="Mouse"      }
+            else  {
+             if (x == 0)             {
+             birthpet="Ox"           }
+             else  {
+              if ((x == 11) || (x == -1)) {
+              birthpet="Tiger"          }
+              else  {
+               if ((x == 10) || (x == -2)) {
+               birthpet="Rabbit"         }
+               else  {
+                if ((x == 9) || (x == -3))  {
+                birthpet="Dragon"         }
+                else  {
+                 if ((x == 8) || (x == -4))  { 
+                 birthpet="Snake"          }
+                 else  {
+                  if ((x == 7) || (x == -5))  { 
+                  birthpet="Horse"          }
+                  else  {
+                   if ((x == 6) || (x == -6))  { 
+                   birthpet="Sheep"          }
+                   else  {
+                    if ((x == 5) || (x == -7))  {  
+                    birthpet="Monkey"         }
+                    else  {
+                     if ((x == 4) || (x == -8))  {
+                     birthpet="Chicken"        }
+                     else  {
+                      if ((x == 3) || (x == -9))  {
+                      birthpet="Dog"            }
+                      else  {
+                       if ((x == 2) || (x == -10))  {
+                       birthpet="Pig"             }  
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+        document.frm.birth.value = birthpet;
+
+}
+// -->
+</script>
+
+
+    <p>Enter your birth year. For example: "1975" </p>
+    <form NAME="frm">
+      <p><input TYPE="text" SIZE="4" NAME="inyear" value="1975"> <input TYPE="button" VALUE="My pet, please"
+      onClick="getpet()"> <br>
+      </p>
+      <p><input TYPE="text" SIZE="9" NAME="birth"> </font></p>
+    </form>
+
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+You have visited this page 
+<SCRIPT>
+page_counter(jcount);
+</SCRIPT>
+ times.
+ <FORM NAME="Calc">
+<TABLE BORDER=4>
+<TR>
+<TD>
+<INPUT TYPE="text"   NAME="Input" Size="16">
+<br>
+</TD>
+</TR>
+<TR>
+<TD>
+<INPUT TYPE="button" NAME="one"   VALUE="  1  " OnClick="Calc.Input.value += '1'">
+<INPUT TYPE="button" NAME="two"   VALUE="  2  " OnCLick="Calc.Input.value += '2'">
+<INPUT TYPE="button" NAME="three" VALUE="  3  " OnClick="Calc.Input.value += '3'">
+<INPUT TYPE="button" NAME="plus"  VALUE="  +  " OnClick="Calc.Input.value += ' + '">
+<br>
+<INPUT TYPE="button" NAME="four"  VALUE="  4  " OnClick="Calc.Input.value += '4'">
+<INPUT TYPE="button" NAME="five"  VALUE="  5  " OnCLick="Calc.Input.value += '5'">
+<INPUT TYPE="button" NAME="six"   VALUE="  6  " OnClick="Calc.Input.value += '6'">
+<INPUT TYPE="button" NAME="minus" VALUE="  -  " OnClick="Calc.Input.value += ' - '">
+<br>
+<INPUT TYPE="button" NAME="seven" VALUE="  7  " OnClick="Calc.Input.value += '7'">
+<INPUT TYPE="button" NAME="eight" VALUE="  8  " OnCLick="Calc.Input.value += '8'">
+<INPUT TYPE="button" NAME="nine"  VALUE="  9  " OnClick="Calc.Input.value += '9'">
+<INPUT TYPE="button" NAME="times" VALUE="  x  " OnClick="Calc.Input.value += ' * '">
+<br>
+<INPUT TYPE="button" NAME="clear" VALUE="  c  " OnClick="Calc.Input.value = ''">
+<INPUT TYPE="button" NAME="zero"  VALUE="  0  " OnClick="Calc.Input.value += '0'">
+<INPUT TYPE="button" NAME="DoIt"  VALUE="  =  " OnClick="Calc.Input.value = eval(Calc.Input.value)">
+<INPUT TYPE="button" NAME="div"   VALUE="  /  " OnClick="Calc.Input.value += ' / '">
+<br>
+</TD>
+</TR>
+</TABLE>
+</FORM>
+
+<p align="center"><font face="arial" size="-2">This free script provided by</font><br>
+<font face="arial, helvetica" size="-2"><a href="http://javascriptkit.com">JavaScript
+Kit</a></font></p>
+<form name="jksearch" action="http://www.google.com/search" method="get" onSubmit="jksitesearch(this)">
+<div id="liveclock" class="outer_face">
+
+<div class="marker oneseven"></div>
+<div class="marker twoeight"></div>
+<div class="marker fourten"></div>
+<div class="marker fiveeleven"></div>
+
+<div class="inner_face">
+<div class="hand hour"></div>
+<div class="hand minute"></div>
+<div class="hand second"></div>
+</div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+/***********************************************
+* CSS3 Analog Clock- by JavaScript Kit (www.javascriptkit.com)
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+var $hands = $('#liveclock div.hand')
+
+window.requestAnimationFrame = window.requestAnimationFrame
+                               || window.mozRequestAnimationFrame
+                               || window.webkitRequestAnimationFrame
+                               || window.msRequestAnimationFrame
+                               || function(f){setTimeout(f, 60)}
+
+
+function updateclock(){
+	var curdate = new Date()
+	var hour_as_degree = ( curdate.getHours() + curdate.getMinutes()/60 ) / 12 * 360
+	var minute_as_degree = curdate.getMinutes() / 60 * 360
+	var second_as_degree = ( curdate.getSeconds() + curdate.getMilliseconds()/1000 ) /60 * 360
+	$hands.filter('.hour').css({transform: 'rotate(' + hour_as_degree + 'deg)' })
+	$hands.filter('.minute').css({transform: 'rotate(' + minute_as_degree + 'deg)' })
+	$hands.filter('.second').css({transform: 'rotate(' + second_as_degree + 'deg)' })
+	requestAnimationFrame(updateclock)
+}
+
+requestAnimationFrame(updateclock)
+
+
+</script><div id="liveclock" class="outer_face">
+
+<div class="marker oneseven"></div>
+<div class="marker twoeight"></div>
+<div class="marker fourten"></div>
+<div class="marker fiveeleven"></div>
+
+<div class="inner_face">
+<div class="hand hour"></div>
+<div class="hand minute"></div>
+<div class="hand second"></div>
+</div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+/***********************************************
+* CSS3 Analog Clock- by JavaScript Kit (www.javascriptkit.com)
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+var $hands = $('#liveclock div.hand')
+
+window.requestAnimationFrame = window.requestAnimationFrame
+                               || window.mozRequestAnimationFrame
+                               || window.webkitRequestAnimationFrame
+                               || window.msRequestAnimationFrame
+                               || function(f){setTimeout(f, 60)}
+
+
+function updateclock(){
+	var curdate = new Date()
+	var hour_as_degree = ( curdate.getHours() + curdate.getMinutes()/60 ) / 12 * 360
+	var minute_as_degree = curdate.getMinutes() / 60 * 360
+	var second_as_degree = ( curdate.getSeconds() + curdate.getMilliseconds()/1000 ) /60 * 360
+	$hands.filter('.hour').css({transform: 'rotate(' + hour_as_degree + 'deg)' })
+	$hands.filter('.minute').css({transform: 'rotate(' + minute_as_degree + 'deg)' })
+	$hands.filter('.second').css({transform: 'rotate(' + second_as_degree + 'deg)' })
+	requestAnimationFrame(updateclock)
+}
+
+requestAnimationFrame(updateclock)
+
+
+</script>
+
+<form name="Tick">
+<input type="text" size="11" name="Clock">
+</form>
+<script>
+<!--
+/*By George Chiang (JK's JavaScript tutorial)
+http://javascriptkit.com
+Credit must stay intact for use*/
+function show(){
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var seconds=Digital.getSeconds()
+var dn="AM"
+if (hours>12){
+dn="PM"
+hours=hours-12
+}
+if (hours==0)
+hours=12
+if (minutes<=9)
+minutes="0"+minutes
+if (seconds<=9)
+seconds="0"+seconds
+document.Tick.Clock.value=hours+":"+minutes+":"
++seconds+" "+dn
+setTimeout("show()",1000)
+}
+show()
+//-->
+</script>
+</body><form name="Tick">
+<input type="text" size="11" name="Clock">
+</form>
+<script>
+<!--
+/*By George Chiang (JK's JavaScript tutorial)
+http://javascriptkit.com
+Credit must stay intact for use*/
+function show(){
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var seconds=Digital.getSeconds()
+var dn="AM"
+if (hours>12){
+dn="PM"
+hours=hours-12
+}
+if (hours==0)
+hours=12
+if (minutes<=9)
+minutes="0"+minutes
+if (seconds<=9)
+seconds="0"+seconds
+document.Tick.Clock.value=hours+":"+minutes+":"
++seconds+" "+dn
+setTimeout("show()",1000)
+}
+show()
+//-->
+</script>
+</html>
